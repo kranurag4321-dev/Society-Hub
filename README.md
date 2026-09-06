@@ -22,4 +22,10 @@ This prototype was developed for a hackathon, prioritizing operational disciplin
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/kranurag4321-dev/Society-Hub.git](https://github.com/kranurag4321-dev/Society-Hub.git)
-   
+
+##Default Test Credentials
+    Use these accounts to test the Role-Based Access Control system:
+    Role                 Username     Password
+    Secretary (Admin)    Admin           secret123
+    Gate Security        Gate Security   guard123
+    Resident              Flat 101       resident123
