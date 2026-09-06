@@ -21,5 +21,5 @@ This prototype was developed for a hackathon, prioritizing operational disciplin
 
 1. **Clone the repository:**
      bash
-       git clone https://github.com/kranurag4321/Society-Hub.git
+       git clone https://github.com/kranurag4321-dev/Society-Hub.git
    
