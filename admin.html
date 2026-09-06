@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretary Admin Panel</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #ecf0f1; padding: 40px; }
+        .admin-card { background: white; padding: 30px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        input[type="text"], textarea { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-post { background-color: #2980b9; color: white; border: none; padding: 15px; width: 100%; font-weight: bold; border-radius: 4px; cursor: pointer; }
+        .btn-post:hover { background-color: #2471a3; }
+        .btn-resolve { background-color: #27ae60; color: white; border: none; padding: 8px 12px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .btn-resolve:hover { background-color: #2ecc71; }
+        .back-link { display: block; text-align: center; margin-top: 25px; text-decoration: none; color: #7f8c8d; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background-color: #bdc3c7; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h2 style="color: #2c3e50; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px;">🛠️ Secretary Admin Panel</h2>
+        
+        
+        <h3 style="color: #34495e;">📢 Post New Notice</h3>
+        <form action="/admin" method="POST">
+            <input type="text" name="title" placeholder="Notice Title (e.g., Lift Maintenance)" required>
+            <textarea name="content" rows="3" placeholder="Type the full announcement here..." required></textarea>
+            <button type="submit" class="btn-post">Post to Dashboard</button>
+        </form>
+        
+        <br><br>
+
+        
+        <h3 style="color: #34495e; border-top: 2px solid #eee; padding-top: 20px;">🔧 Helpdesk Management</h3>
+        <table>
+            <tr>
+                <th>Flat Number</th>
+                <th>Issue Details</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            
+            {% if tickets %}
+                {% for ticket in tickets %}
+                <tr>
+                    <td><strong>{{ ticket.flat_number }}</strong></td>
+                    <td>
+                        <strong>{{ ticket.issue_type }}</strong><br>
+                        <span style="font-size: 14px; color: #555;">{{ ticket.description }}</span>
+                    </td>
+                    
+                    
+                    <td style="font-weight: bold; color: {% if ticket.status == 'Open' %}#d35400{% else %}#27ae60{% endif %};">
+                        [{{ ticket.status }}]
+                    </td>
+                    
+                    <td>
+                        
+                        {% if ticket.status == 'Open' %}
+                        <form action="/resolve_ticket" method="POST" style="margin: 0;">
+                            
+                            <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+                            <button type="submit" class="btn-resolve">Resolve</button>
+                        </form>
+                        {% else %}
+                        <span style="color: #7f8c8d; font-style: italic;">Closed</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: #7f8c8d;">No tickets submitted yet.</td>
+                </tr>
+            {% endif %}
+        </table>
+        
+        <a href="/" class="back-link">← Back to Main Dashboard</a>
+    </div>
+
+</body>
+</html>
