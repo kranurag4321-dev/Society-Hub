@@ -20,6 +20,6 @@ This prototype was developed for a hackathon, prioritizing operational disciplin
 ## How to Run Locally
 
 1. **Clone the repository:**
-     bash
-       git clone https://github.com/kranurag4321-dev/Society-Hub.git
+   ```bash
+   git clone [https://github.com/kranurag4321-dev/Society-Hub.git](https://github.com/kranurag4321-dev/Society-Hub.git)
    
