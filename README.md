@@ -25,7 +25,7 @@ This prototype was developed for a hackathon, prioritizing operational disciplin
 
 ##Default Test Credentials
     Use these accounts to test the Role-Based Access Control system:
-    Role                 Username     Password
-    Secretary (Admin)    Admin           secret123
-    Gate Security        Gate Security   guard123
-    Resident              Flat 101       resident123
+    
+      ( Admin           secret123)
+       (Gate Security   guard123)
+             ( Flat 101       resident123)
